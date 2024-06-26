@@ -1,0 +1,26 @@
+autoinstall:
+  version: 1
+  identity:
+    hostname: ubuntu-cloud-intial
+    realname: "Administrator"
+    username: administrator
+    password: "$6$hA1HkJJKesgcmwXH$MX6NJaOE/8QmGK63B5aeFqqavCoEC6rQOpoZu8lrZBXBdaF5G2a.Yn/smGTaJwg50C57F.ik2QpEpMoEgAuEu1"
+  #storage:
+  #  layout:
+  #    name: lvm
+  snaps:
+    - name: spotify
+      classic: false
+    - name: obsidian
+      classic: true
+    - name: code
+      classic: true
+  packages:
+    - git
+    - htop
+    - curl
+  #late-commands:
+  #  - curtin in-target -- wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
+  #  - curtin in-target -- dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb
+  #  - curtin in-target -- apt update
+  #  - curtin in-target -- apt install -y proton-vpn-gnome-desktop

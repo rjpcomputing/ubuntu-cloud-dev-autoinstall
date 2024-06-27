@@ -12,6 +12,8 @@ autoinstall:
   #  layout:
   #    name: lvm
   snaps:
+    - name: typora
+      classic: false
     - name: spotify
       classic: false
     - name: obsidian
@@ -22,6 +24,9 @@ autoinstall:
     - git
     - htop
     - curl
+    - unzip
+  late-commands:
+    - curl -fsSL https://bun.sh/install | bash
   #late-commands:
   #  - curtin in-target -- wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
   #  - curtin in-target -- dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb

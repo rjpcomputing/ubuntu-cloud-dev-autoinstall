@@ -11,9 +11,42 @@ autoinstall:
   interactive-sections:
     - network
     - storage
-  #storage:
-  #  layout:
-  #    name: lvm
+  storage:
+    swap:
+      size: 8G
+    config:
+      # - type: disk
+      #   id: root-disk
+      #   match:
+      #     ssd: true
+      #     size: largest
+      - type: partition
+        device: root-disk
+        id: boot-partition
+        name: BOOT
+        flag: boot
+        size: 8%
+      - type: partition
+        device: root-disk
+        id: os-partition
+        name: OS
+        size: 40%
+      - type: partition
+        device: root-disk
+        id: home-partition
+        name: HOME
+        # preserve: true
+        size: -1
+      - type: mount
+        device: boot-partition
+        path: /boot/efi
+      - type: mount
+        device: os-partition
+        path: /
+      - type: mount
+        device: home-partition
+        path: /home
+        preserve: true
   # early-commands:
   #   - 
   packages:

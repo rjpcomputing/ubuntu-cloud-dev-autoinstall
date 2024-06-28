@@ -2,7 +2,7 @@ autoinstall:
   version: 1
   locale: en_US.UTF-8
   identity:
-    hostname: ubuntu-cloud-intial
+    hostname: ubuntu-cloud-initial
     realname: "Administrator"
     username: administrator
     password: "$6$hA1HkJJKesgcmwXH$MX6NJaOE/8QmGK63B5aeFqqavCoEC6rQOpoZu8lrZBXBdaF5G2a.Yn/smGTaJwg50C57F.ik2QpEpMoEgAuEu1"

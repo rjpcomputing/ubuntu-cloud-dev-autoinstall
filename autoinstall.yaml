@@ -11,10 +11,19 @@ autoinstall:
   #storage:
   #  layout:
   #    name: lvm
-  early-commands:
-    - curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
-    - wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg && install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-    - echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+  # early-commands:
+  #   - 
+  packages:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - git
+    - gnupg
+    - gpg
+    - htop
+    - unzip
+    - wget
+    - zip
   snaps:
     - name: typora
       classic: false
@@ -24,23 +33,16 @@ autoinstall:
       classic: true
     - name: code
       classic: true
-  packages:
-    - apt-transport-https
-    - ca-certificates
-    - code
-    - curl
-    - git
-    - gnupg
-    - gpg
-    - htop
-    - nodejs
-    - unzip
-    - wget
-    - zip
+  codecs:
+    install: true
+  drivers:
+    install: true
   late-commands:
-    - curl -fsSL https://bun.sh/install | bash
-  #late-commands:
-  #  - curtin in-target -- wget https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb
-  #  - curtin in-target -- dpkg -i ./protonvpn-stable-release_1.0.3-3_all.deb
-  #  - curtin in-target -- apt update
-  #  - curtin in-target -- apt install -y proton-vpn-gnome-desktop
+   - curtin in-target -- curl -fsSL https://bun.sh/install | bash
+   - curtin in-target -- curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+   - curtin in-target -- wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg && install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+   - curtin in-target -- echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | tee /etc/apt/sources.list.d/vscode.list > /dev/null
+   # - curtin in-target -- 
+   # - curtin in-target -- 
+   - curtin in-target -- apt update
+   - curtin in-target -- apt install -y nodejs code

@@ -3,6 +3,7 @@ autoinstall:
   refresh-installer:
     update: true
   locale: en_US.UTF-8
+  timezone: geoip
   identity:
     hostname: ubuntu-cloud-initial
     realname: "Administrator"
